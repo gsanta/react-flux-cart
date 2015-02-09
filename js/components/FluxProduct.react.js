@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 var React = require('react');
 var FluxCartActions = require('../actions/FluxCartActions');
 
@@ -46,7 +48,7 @@ var FluxProduct = React.createClass({
         </div>
       </div>
     );
-  },
+  }
 
 });
 

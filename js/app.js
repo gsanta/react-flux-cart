@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 var React = require('react');
 var ProductData = require('./ProductData');
 var CartAPI = require('./utils/CartAPI')

@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 var React = require('react');
 var CartStore = require('../stores/CartStore');
 var ProductStore = require('../stores/ProductStore');
