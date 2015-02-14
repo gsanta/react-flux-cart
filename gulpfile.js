@@ -12,6 +12,7 @@ var watchify = require('watchify');
 var es6ify = require('es6ify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
+var shim = require('browserify-shim');
 
 
 /** Config variables */
@@ -28,13 +29,10 @@ var htmlBuild = dist;
 var jsxFiles = 'app/jsx/**/*.jsx';
 
 var libFiles = [
-    'lib/react/react-with-addons.js',
-    'lib/underscore/underscore.js',
-    'node_modules/es6ify/node_modules/flux/index.js',
     'node_modules/es6ify/node_modules/traceur/bin/traceur-runtime.js'
 ];
 
-var libBuild = dist + '/lib';
+var libBuild = dist + '/js';
 var requireFiles = [
     './node_modules/react/react.js',
     './node_modules/underscore/underscore.js'
@@ -42,8 +40,16 @@ var requireFiles = [
 
 
 gulp.task('lib', function () {
-    return gulp.src(libFiles).
+    gulp.src(libFiles).
         pipe(gulp.dest(libBuild));
+
+    return browserify()
+        .require('underscore')
+        .require('react')
+        .bundle()
+        .on('error', function() { console.log("error in lib task") })
+        .pipe(source('lib.js'))
+        .pipe(gulp.dest(libBuild))
 });
 
 
@@ -67,6 +73,8 @@ function compileScripts(watch) {
         bundler = browserify(entryFile);
     }
 
+    bundler.external('underscore')
+    bundler.external('react')
     bundler.transform(reactify);
     bundler.transform(es6ify);
 

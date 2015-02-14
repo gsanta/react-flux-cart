@@ -2,8 +2,7 @@
   "name": "react-es6-browserify",
   "version": "0.0.5",
   "dependencies": {
-    "react": "^0.12.2",
-    "underscore": "^1.7.0"
+
   },
   "devDependencies": {
     "browserify": "^3.46.0",
@@ -22,5 +21,12 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "browser": {
+    "underscore": "./lib/underscore/underscore.js",
+    "react": "./lib/react/react.js"
+  },
+  "browserify-shim": {
+    "underscore": "_"
   }
 }

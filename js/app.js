@@ -16,3 +16,7 @@ React.render(
   <FluxCartApp />,
   document.getElementById('flux-cart')
 );
+
+var testFunc = () => {
+    console.log("haho")
+}
