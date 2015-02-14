@@ -9,7 +9,7 @@ var FluxCartActions = {
     AppDispatcher.handleAction({
       actionType: FluxCartConstants.RECEIVE_DATA,
       data: data
-    })
+    });
   },
 
   // Set currently selected product variation
@@ -17,7 +17,7 @@ var FluxCartActions = {
     AppDispatcher.handleAction({
       actionType: FluxCartConstants.SELECT_PRODUCT,
       data: index
-    })
+    });
   },
 
   // Add item to cart
@@ -26,7 +26,7 @@ var FluxCartActions = {
       actionType: FluxCartConstants.CART_ADD,
       sku: sku,
       update: update
-    })
+    });
   },
 
   // Remove item from cart
@@ -34,7 +34,7 @@ var FluxCartActions = {
     AppDispatcher.handleAction({
       actionType: FluxCartConstants.CART_REMOVE,
       sku: sku
-    })
+    });
   },
 
   // Update cart visibility status
@@ -42,7 +42,7 @@ var FluxCartActions = {
     AppDispatcher.handleAction({
       actionType: FluxCartConstants.CART_VISIBLE,
       cartVisible: cartVisible
-    })
+    });
   }
 
 };

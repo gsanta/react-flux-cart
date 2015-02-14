@@ -13,7 +13,7 @@ var FluxProduct = React.createClass({
       name: this.props.product.name,
       type: this.props.selected.type,
       price: this.props.selected.price
-    }
+    };
     FluxCartActions.addToCart(sku, update);
     FluxCartActions.updateCartVisible(true);
   },
@@ -39,7 +39,7 @@ var FluxProduct = React.createClass({
             {this.props.product.variants.map(function(variant, index){
               return (
                 <option key={index} value={index}>{variant.type}</option>
-              )
+              );
             })}
           </select>
           <button type="button" onClick={this.addToCart} disabled={ats  > 0 ? '' : 'disabled'}>

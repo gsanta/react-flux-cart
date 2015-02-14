@@ -13,6 +13,9 @@ var es6ify = require('es6ify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
 var shim = require('browserify-shim');
+var jshint = require('gulp-jshint');
+var react = require('gulp-react');
+var cache = require('gulp-cached');
 
 
 /** Config variables */
@@ -56,6 +59,30 @@ gulp.task('lib', function () {
 gulp.task('html', function () {
     return gulp.src(htmlFiles).
         pipe(gulp.dest(htmlBuild));
+});
+
+gulp.task("lint", function() {
+    //gulp.src("./js/*.js")
+    //    .pipe(jsxhint())
+    //    .pipe(jsxhint.reporter("default"));
+    var stream = gulp.src("./js/**/*.js")
+        .pipe(cache('jshint'))
+        .pipe(react())
+        .on('error', function(err) {
+            console.error('JSX ERROR in ' + err.fileName);
+            console.error(err.message);
+            this.end();
+        })
+        .pipe(jshint({
+            esnext: true
+        }))
+        .pipe(jshint.reporter('default'));
+
+    if (process.env.CI) {
+        stream = stream.pipe(jshint.reporter('fail'));
+    }
+
+    return stream;
 });
 
 

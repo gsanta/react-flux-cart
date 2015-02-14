@@ -9,7 +9,7 @@ var _products = {}, _cartVisible = false;
 // Add product to cart
 function add(sku, update) {
   update.quantity = sku in _products ? _products[sku].quantity + 1 : 1;
-  _products[sku] = _.extend({}, _products[sku], update)
+  _products[sku] = _.extend({}, _products[sku], update);
 }
 
 // Set cart visibility
