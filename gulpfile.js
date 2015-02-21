@@ -12,10 +12,10 @@ var watchify = require('watchify');
 var es6ify = require('es6ify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
-var shim = require('browserify-shim');
 var jshint = require('gulp-jshint');
 var react = require('gulp-react');
 var cache = require('gulp-cached');
+var karma = require('karma').server;
 
 
 /** Config variables */
@@ -83,6 +83,13 @@ gulp.task("lint", function() {
     }
 
     return stream;
+});
+
+gulp.task('test', function (done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done);
 });
 
 
