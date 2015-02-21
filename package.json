@@ -4,6 +4,7 @@
   "dependencies": {},
   "devDependencies": {
     "browserify": "^3.46.0",
+    "browserify-shim": "^3.8.3",
     "connect": "^2.15.0",
     "envify": "^1.2.1",
     "es6ify": "^1.6.0",
